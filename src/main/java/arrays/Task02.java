@@ -2,9 +2,10 @@ package arrays;
 
 import java.util.Arrays;
 
+//This task took 10 minutes.
 public class Task02 {
 
-    public static boolean isTransposition (String s1, String s2) {
+    public static boolean isTransposition(String s1, String s2) {
 
         if (s1 == null && s2 == null) return true;
 

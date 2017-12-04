@@ -3,6 +3,7 @@ package arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+//This task took 10 minutes
 public class Task01 {
 
     public static boolean hasNoRepeats(String s) {

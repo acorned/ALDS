@@ -15,4 +15,12 @@ public class Task04Test {
         assertFalse(Task04.isPalindromeTransposition(s2));
     }
 
+    @Test
+    public void isPalindromeWithHashMap() {
+        String s = "palind rome Plindr omea s";
+        String s2 = "palind rome Plindr Omea st";
+        assertTrue(Task04.isPalindromeTranspositionWithHashMap(s));
+        assertFalse(Task04.isPalindromeTranspositionWithHashMap(s2));
+    }
+
 }

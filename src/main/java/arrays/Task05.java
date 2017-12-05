@@ -1,5 +1,6 @@
 package arrays;
 
+//This task took 30 minutes
 public class Task05 {
     public static boolean isModificatedOnce(String s1, String s2) {
         if (s1 == null || s2 == null) return false;

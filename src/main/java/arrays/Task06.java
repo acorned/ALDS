@@ -4,6 +4,8 @@ public class Task06 {
 
     public static String compress(String s) {
 
+        if (s == null) return null;
+
         StringBuilder result = new StringBuilder();
         int count = 0;
 

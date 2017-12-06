@@ -21,9 +21,9 @@ public class Task04Test {
         l.add(4);
         Integer value = 5;
 
-        LinkedList<Integer> expectedList = Task04.splitByX(l, value);
+        LinkedList<Integer> splittedList = Task04.splitByX(l, value);
 
-        Iterator<Integer> i = expectedList.iterator();
+        Iterator<Integer> i = splittedList.iterator();
         while (i.next() < value);
 
         while (i.hasNext()) {

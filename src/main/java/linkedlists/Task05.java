@@ -2,7 +2,7 @@ package linkedlists;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
+//It took about 15 minutes to solve
 public class Task05 {
     public static LinkedList<Integer> sum(LinkedList<Integer> l1, LinkedList<Integer> l2) {
         LinkedList<Integer> result = new LinkedList<>();

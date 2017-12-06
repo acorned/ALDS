@@ -2,7 +2,10 @@ package linkedlists;
 
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+
+import static org.junit.Assert.assertTrue;
 
 public class Task04Test {
 
@@ -16,7 +19,16 @@ public class Task04Test {
         l.add(3);
         l.add(5);
         l.add(4);
-        System.out.println(Task04.splitByX(l, 5));
+        Integer value = 5;
+
+        LinkedList<Integer> expectedList = Task04.splitByX(l, value);
+
+        Iterator<Integer> i = expectedList.iterator();
+        while (i.next() < value);
+
+        while (i.hasNext()) {
+            assertTrue(i.next() >= value);
+        }
     }
 
 }

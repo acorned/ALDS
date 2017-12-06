@@ -1,9 +1,9 @@
 package linkedlists;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
-import java.util.TreeSet;
 
 //This task took several hours (I had to sleep with it)
 
@@ -12,7 +12,7 @@ public class Task01 {
 
         if (l == null) return null;
 
-        Set<T> store = new TreeSet<>();
+        Set<T> store = new HashSet<>();
         Iterator<T> i = l.iterator();
 
         while (i.hasNext()) {

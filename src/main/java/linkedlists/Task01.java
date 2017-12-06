@@ -5,8 +5,12 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeSet;
 
+//This task took several hours (I had to sleep with it)
+
 public class Task01 {
     public static <T> LinkedList<T> deleteRepeats(LinkedList<T> l) {
+
+        if (l == null) return null;
 
         Set<T> store = new TreeSet<>();
         Iterator<T> i = l.iterator();
@@ -21,7 +25,11 @@ public class Task01 {
     }
 
     public static <T> LinkedList<T> deleteRepeatsWithoutDataStructures(LinkedList<T> l) {
+
+        if (l == null) return null;
+
         Iterator<T> i = l.iterator();
+
         while (i.hasNext()) {
 
             T value = i.next();

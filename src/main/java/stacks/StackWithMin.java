@@ -12,7 +12,7 @@ public class StackWithMin<T extends Comparable> {
         if (top == null) throw new EmptyStackException();
         T result = top.data;
 
-        if (min.equals(top)) min = min.next;
+        if (min.data.compareTo(top.data) == 0) min = min.next;
 
         top = top.next;
         return result;
@@ -25,9 +25,9 @@ public class StackWithMin<T extends Comparable> {
 
         if (min == null) min = new Node<>(data);
 
-        if (node.data.compareTo(min.data) < 0) {
+        if (node.data.compareTo(min.data) <= 0) {
         Node<T> temp = min;
-        min = node;
+        min = new Node<T>(data);
         min.next = temp;
         }
     }

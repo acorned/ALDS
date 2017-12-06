@@ -14,8 +14,12 @@ public class StackWithMinTest {
         stack.push(3);
         stack.push(2);
         stack.push(5);
+        stack.push(0);
 
+        assertThat(stack.min(), Is.is(0));
+        stack.pop();
         assertThat(stack.min(), Is.is(1));
+
     }
 
 }

@@ -6,11 +6,14 @@ import java.util.EmptyStackException;
 public class StackWithMin<T extends Comparable> {
 
     private Node<T> top;
-    private T min;
+    private Node<T> min;
 
     public T pop() {
         if (top == null) throw new EmptyStackException();
         T result = top.data;
+
+        if (min.equals(top)) min = min.next;
+
         top = top.next;
         return result;
     }
@@ -19,10 +22,17 @@ public class StackWithMin<T extends Comparable> {
         Node<T> node = new Node<>(data);
         node.next = top;
         top = node;
-        if (min == null || data.compareTo(min) < 0) min = data;
+
+        if (min == null) min = new Node<>(data);
+
+        if (node.data.compareTo(min.data) < 0) {
+        Node<T> temp = min;
+        min = node;
+        min.next = temp;
+        }
     }
 
-    public T min() {return min;}
+    public T min() {return min.data;}
 
     private static class Node<T> {
         private T data;

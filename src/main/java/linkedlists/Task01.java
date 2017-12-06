@@ -21,20 +21,22 @@ public class Task01 {
     }
 
     public static <T> LinkedList<T> deleteRepeatsWithoutDataStructures(LinkedList<T> l) {
-//
-//        boolean isChanged = false;
-//
-//        for (int j = 0; j < l.size(); j++) {
-//            Iterator<T> i = l.iterator();
-//            T value = i.next();
-//            i.forEachRemaining(v -> {
-//                if (v == value && i.hasNext()) {
-//                    i.next();
-//                    i.remove();
-//                }
-//            });
-//        }
-// TODO: 05.12.17 Do something 
+        Iterator<T> i = l.iterator();
+        while (i.hasNext()) {
+
+            T value = i.next();
+
+            Iterator<T> j = l.iterator();
+            while (j.next() != value);
+
+            while (j.hasNext()) {
+                if (j.next() == value) {
+                    j.remove();
+                    i = l.iterator();
+                }
+            }
+        }
+
         return l;
     }
 }

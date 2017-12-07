@@ -39,7 +39,7 @@ public class DiGraph {
         if (source.children.contains(destination)) return true;
         Boolean result = false;
         for (Node child : source.children) {
-            if (result == true) return true;
+            if (result) return true;
             if (!isVisited.get(child)) result |= search(child, destination, isVisited);
         }
         return result;

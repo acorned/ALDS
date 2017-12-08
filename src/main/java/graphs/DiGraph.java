@@ -49,8 +49,13 @@ public class DiGraph {
         public String name;
         private ArrayList<Node> children = new ArrayList<>();
 
+
         private Node(String name) {
             this.name = name;
+        }
+
+        public ArrayList<Node> getChildren() {
+            return children;
         }
     }
 }

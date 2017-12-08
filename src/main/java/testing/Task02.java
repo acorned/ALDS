@@ -28,11 +28,16 @@ public class Task02 {
             for (int i = 2; i <= 987_654_321 / divisioner; i++) {
 
                 Set<Character> name = new HashSet<>();
-                for(char c : String.valueOf(divisioner * i).toCharArray()) {
+                char[] s = String.valueOf((divisioner * i)).toCharArray();
+                for(char c : s) {
+
                     name.add(c);
                 }
 
-                if (name.size()== 9) result.put(divisioner * i, divisioner);
+                if (name.size()== 9) {
+                    result.put(divisioner * i, divisioner);
+                    System.out.printf("%d %d \n", divisioner * i, divisioner);
+                }
 
             }
 

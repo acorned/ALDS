@@ -49,12 +49,17 @@ public class Task10 {
         node2.nodes[1] = node6;
         node3.nodes[0] = node7;
         node3.nodes[1] = node8;
+
         //Second tree
         Node root2 = new Node("node1");
         root2.nodes[0] = new Node("node3");
         root2.nodes[1] = new Node("node4");
         root2.nodes[0].nodes[0] = new Node("node7");
         root2.nodes[0].nodes[1] = new Node("node8");
+
+        System.out.println(isPartOf(root, root2));
+
+        root2.nodes[0].nodes[0].nodes[0] = new Node("some node");
 
         System.out.println(isPartOf(root, root2));
     }

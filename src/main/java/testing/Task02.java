@@ -22,7 +22,8 @@ public class Task02 {
         permutation("", "123456789");
         System.out.println(allPossible.size());
 
-        HashMap<Long, Long> result = new HashMap<>();
+        HashMap<Long, Set<Long>> result = new HashMap<>();
+        Long count = 0L;
 
         for (Long divisioner : allPossible) {
             for (int i = 2; i <= 987_654_321 / divisioner; i++) {
@@ -35,7 +36,9 @@ public class Task02 {
                 }
 
                 if (name.size()== 9) {
-                    result.put(divisioner * i, divisioner);
+                    result.putIfAbsent(divisioner * i, new HashSet<Long>());
+                    result.get(divisioner * i).add(divisioner);
+                    count++;
                     System.out.printf("%d %d \n", divisioner * i, divisioner);
                 }
 
@@ -43,7 +46,7 @@ public class Task02 {
 
         }
 
-        System.out.format("%d %d \n", allPossible.size(), result.size());
+        System.out.format("Total numbers %d\nTotal divisoners %d\nTotal results %d\n", allPossible.size(), result.size(), count);
     }
 
 

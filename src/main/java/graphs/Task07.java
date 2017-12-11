@@ -42,7 +42,7 @@ public class Task07 {
                     break;
                 }
             }
-            if (find == false) {
+            if (!find) {
                 System.out.println("Rest of projects can't be done");
                 break;
             }

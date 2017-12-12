@@ -20,7 +20,7 @@ public class Task06 {
     public static void main(String[] args) {
 
         Task06 app = new Task06();
-        int n = 5;
+        int n = 7;
         for (int i = n; i > 0; i--) {
             app.tower1.push(i);
         }

@@ -1,9 +1,6 @@
 package testing;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TaskFinal {
     HashMap<String, Node> nodes = new HashMap<>();
@@ -12,7 +9,7 @@ public class TaskFinal {
         return nodes;
     }
 
-    public void deleteNode(String name){
+    public void deleteNode(String name) {
 
         Node node = nodes.get(name);
 
@@ -31,25 +28,33 @@ public class TaskFinal {
         nodes.remove(name);
     }
 
-    public void optimize(){
-        HashMap<String, Integer> mapHelper = new HashMap<>();
+    public void optimize() {
+        Queue<Map.Entry<String, Integer>> queueHelper = new LinkedList<>();
 
-        for (Node node: nodes.values()) {
-            mapHelper.put(node.name, node.links.size());
+        for (Node node : nodes.values()) {
+            queueHelper.add(new AbstractMap.SimpleEntry<>(node.name, node.links.size()));
         }
 
-        for (Map.Entry<String, Integer> item : mapHelper.entrySet()) {
-            if (item.getValue() == 2) deleteNode(item.getKey());
-        }
+        while (!queueHelper.isEmpty()) {
+            Map.Entry<String, Integer> item = queueHelper.remove();
+            if (item.getValue() == 2) {
+                Node first = nodes.get(item.getKey()).links.first();
+                Node second = nodes.get(item.getKey()).links.last();
+                deleteNode(item.getKey());
+                if (first.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(first.name, 2));
+                if (second.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(second.name, 2));
+            }
 
+        }
     }
+
 
     class Node implements Comparable<Node> {
 
         String name;
         TreeSet<Node> links = new TreeSet<Node>();
 
-        public Node(String name){
+        public Node(String name) {
             this.name = name;
             nodes.put(name, this);
         }
@@ -72,6 +77,7 @@ public class TaskFinal {
         public int compareTo(Node o) {
             return name.compareTo(o.name);
         }
+
     }
 
     public static void main(String[] args) {
@@ -94,13 +100,13 @@ public class TaskFinal {
         graph.getNodes().get("2").addEdge("4");
         graph.getNodes().get("2").addEdge("5");
         System.out.println("At start we have these edges:");
-        for (Node node: graph.getNodes().values()){
+        for (Node node : graph.getNodes().values()) {
             System.out.format("%s : %s\n", node.name, node.getLinks());
         }
 
         graph.optimize();
-        System.out.println("After optimizing:");
-        for (Node node: graph.getNodes().values()){
+        System.out.println("After optimizingмож:");
+        for (Node node : graph.getNodes().values()) {
             System.out.format("%s : %s\n", node.name, node.getLinks());
         }
 

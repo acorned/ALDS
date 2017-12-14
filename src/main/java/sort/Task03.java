@@ -10,7 +10,7 @@ public class Task03 {
             mid = (low + high) / 2;
             if (array[mid] == num) {
                 return mid;
-            } else if ((array[mid] > num) ^ (array[high] > num) ^ (array[high] > array[mid])) {
+            } else if ((array[mid] > num) ^ (array[high] >= num) ^ (array[high] > array[mid])) {
                 high = mid - 1;
             } else {
                 low = mid + 1;

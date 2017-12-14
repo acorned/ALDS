@@ -9,13 +9,18 @@ public class TaskFinal {
         return nodes;
     }
 
-    public void deleteNode(String name) {
+    public boolean deleteNode(String name) {
 
         Node node = nodes.get(name);
 
+        if (node == null) {
+            System.out.format("Node %s is already deleted\n", name);
+            return false;
+        }
+
         if (node.links.size() != 2) {
-            System.out.format("Can't delete node %s\n", name);
-            return;
+            System.out.format("State of node %s has changed, now it can't be deleted\n", name);
+            return false;
         }
 
         Node first = node.links.first();
@@ -26,6 +31,8 @@ public class TaskFinal {
         second.links.remove(node);
 
         nodes.remove(name);
+        System.out.format("Node %s has deleted\n", name);
+        return true;
     }
 
     public void optimize() {
@@ -37,12 +44,13 @@ public class TaskFinal {
 
         while (!queueHelper.isEmpty()) {
             Map.Entry<String, Integer> item = queueHelper.remove();
-            if (item.getValue() == 2) {
+            if (item.getValue() == 2 && nodes.get(item.getKey()) != null) {
                 Node first = nodes.get(item.getKey()).links.first();
                 Node second = nodes.get(item.getKey()).links.last();
-                deleteNode(item.getKey());
-                if (first.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(first.name, 2));
-                if (second.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(second.name, 2));
+                if (deleteNode(item.getKey())) {
+                    if (first.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(first.name, 2));
+                    if (second.links.size() == 2) queueHelper.add(new AbstractMap.SimpleEntry<>(second.name, 2));
+                }
             }
 
         }
@@ -105,7 +113,7 @@ public class TaskFinal {
         }
 
         graph.optimize();
-        System.out.println("After optimizingмож:");
+        System.out.println("After optimizing:");
         for (Node node : graph.getNodes().values()) {
             System.out.format("%s : %s\n", node.name, node.getLinks());
         }

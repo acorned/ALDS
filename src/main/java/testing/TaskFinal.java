@@ -3,7 +3,7 @@ package testing;
 import java.util.*;
 
 public class TaskFinal {
-    HashMap<String, Node> nodes = new HashMap<>();
+    private HashMap<String, Node> nodes = new HashMap<>();
 
     public HashMap<String, Node> getNodes() {
         return nodes;
@@ -59,8 +59,8 @@ public class TaskFinal {
 
     class Node implements Comparable<Node> {
 
-        String name;
-        TreeSet<Node> links = new TreeSet<Node>();
+        private String name;
+        private TreeSet<Node> links = new TreeSet<>();
 
         public Node(String name) {
             this.name = name;
@@ -107,17 +107,17 @@ public class TaskFinal {
         graph.getNodes().get("5").addEdge("4");
         graph.getNodes().get("2").addEdge("4");
         graph.getNodes().get("2").addEdge("5");
+
         System.out.println("At start we have these edges:");
         for (Node node : graph.getNodes().values()) {
             System.out.format("%s : %s\n", node.name, node.getLinks());
         }
 
         graph.optimize();
+
         System.out.println("After optimizing:");
         for (Node node : graph.getNodes().values()) {
             System.out.format("%s : %s\n", node.name, node.getLinks());
         }
-
-        graph.deleteNode("4");
     }
 }
